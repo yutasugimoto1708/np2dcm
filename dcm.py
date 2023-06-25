@@ -108,8 +108,8 @@ class Dcm(Dammy):
             for j in range(D): # per slice
                 # case統一,case毎に異なる値、基本的にcase名と同一とする
                 ds = self.ds 
-                ds.PatientName = f"test{case}"
-                ds.PatientID = f"test{case}"
+                ds.PatientName = f"{case}"
+                ds.PatientID = f"{case}"
                 ds.PatientBirthDate = f"20001208"  # 形式は"YYYYMMDD"
                 ds.PatientSex = "M" # "F"は女性、"M"は男性
                 ds.PatientAge = f"0{age}Y"
