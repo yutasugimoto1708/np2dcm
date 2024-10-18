@@ -125,8 +125,8 @@ class Dcm(Dammy):
                 ds.InstanceNumber = f"{j+1}"
                 ds.ImagePositionPatient = ['0', '0', f'{j}']
                 ds.SOPInstanceUID = pydicom.uid.generate_uid()
-                ds.WindowWidth = array.max() - array.min()
-                ds.WindowCenter = (array.max() - array.min())//2 
+                ds.WindowWidth = np.float64(array.max()) - np.float64(array.min())
+                ds.WindowCenter = (np.float64(array.max()) - np.float64(array.min()))//2 
                 ds.BitsAllocated = bit 
                 ds.BitsStored = bit
                 ds.HighBit = bit - 1
