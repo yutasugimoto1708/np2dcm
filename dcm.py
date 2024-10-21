@@ -121,7 +121,9 @@ class Dcm(Dammy):
                 ds.SeriesInstanceUID = keyUID
                 ds.SeriesDescription = key
                 # 処理スライス毎異なる値
-                ds.PixelData = array[-(j+1),:,:].tobytes()
+                if array.dtype == np.float32: ds.FloatPixelData = array[-(j+1),:,:].tobytes()
+                elif array.dtype == np.float64: ds.DoubleFloatPixelData = array[-(j+1),:,:].tobytes()
+                else: ds.PixelData = array[-(j+1),:,:].tobytes()
                 ds.InstanceNumber = f"{j+1}"
                 ds.ImagePositionPatient = ['0', '0', f'{j}']
                 ds.SOPInstanceUID = pydicom.uid.generate_uid()
